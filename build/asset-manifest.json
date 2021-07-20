@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4a003d2a.chunk.css",
+    "main.js": "/static/js/main.59b449f6.chunk.js",
+    "main.js.map": "/static/js/main.59b449f6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b9174a00.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b9174a00.js.map",
+    "static/js/2.cced11b1.chunk.js": "/static/js/2.cced11b1.chunk.js",
+    "static/js/2.cced11b1.chunk.js.map": "/static/js/2.cced11b1.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.4a003d2a.chunk.css.map": "/static/css/main.4a003d2a.chunk.css.map",
+    "static/js/2.cced11b1.chunk.js.LICENSE.txt": "/static/js/2.cced11b1.chunk.js.LICENSE.txt",
+    "static/media/autumnBackground.77ca1cd9.svg": "/static/media/autumnBackground.77ca1cd9.svg",
+    "static/media/beach.261a5704.svg": "/static/media/beach.261a5704.svg",
+    "static/media/orangeSummer.4e2c68dd.svg": "/static/media/orangeSummer.4e2c68dd.svg",
+    "static/media/snowflake.b7030bf0.svg": "/static/media/snowflake.b7030bf0.svg",
+    "static/media/snowy-mountains.e31164fc.jpg": "/static/media/snowy-mountains.e31164fc.jpg",
+    "static/media/springBackground.18a3ff52.svg": "/static/media/springBackground.18a3ff52.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b9174a00.js",
+    "static/js/2.cced11b1.chunk.js",
+    "static/css/main.4a003d2a.chunk.css",
+    "static/js/main.59b449f6.chunk.js"
+  ]
+}
