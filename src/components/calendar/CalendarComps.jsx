@@ -7,6 +7,7 @@ const CalendarContainer = styled.div`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
   background-color: ${(props) => {
     if (props.month === 12) return "#76FFFF";
     if (props.month >= 1 && props.month <= 3) {
@@ -73,7 +74,7 @@ const CalendarGrid = styled(animated.div)`
   display: grid;
 
   position: relative;
-  z-index: 0;
+  z-index: 1;
 
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 0.4fr repeat(6, 1fr);

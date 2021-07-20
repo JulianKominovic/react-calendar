@@ -26,14 +26,88 @@ import winterBottom from "../svgs/snowy-mountains.jpg";
 import summerBottom from "../svgs/beach.svg";
 import springBottom from "../svgs/springBackground.svg";
 import autumnBottom from "../svgs/autumnBackground.svg";
+//CACHE ALIKE CONSTANT
+// const [summerTop, winterTop, winterBot, summerBot, springBot, autumnBot] = [
+//   summerSvgUrl,
+//   snowflakeUrl,
+//   winterBottom,
+//   summerBottom,
+//   springBottom,
+//   autumnBottom,
+// ];
+
+const Summer = () => {
+  return (
+    <AnimationsContainer>
+      <TopElementAnimated src={summerSvgUrl} />
+      <BottomImageElement src={summerBottom}></BottomImageElement>
+      <AuthorCredits
+        href="https://www.vecteezy.com/free-vector/nature"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Nature Vectors by Vecteezy
+      </AuthorCredits>
+    </AnimationsContainer>
+  );
+};
+
+const Winter = () => {
+  return (
+    <AnimationsContainer>
+      <TopElementAnimated src={snowflakeUrl} />
+      <BottomImageElement src={autumnBottom}></BottomImageElement>
+      <AuthorCredits
+        href="https://www.vecteezy.com/free-vector/nature"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Nature Vectors by Vecteezy
+      </AuthorCredits>
+    </AnimationsContainer>
+  );
+};
+
+const Autumn = () => {
+  return (
+    <AnimationsContainer>
+      <TopElementAnimated src={snowflakeUrl} />
+      <BottomImageElement src={winterBottom}></BottomImageElement>
+    </AnimationsContainer>
+  );
+};
+
+const Spring = () => {
+  return (
+    <AnimationsContainer>
+      <TopElementAnimated src={summerSvgUrl} />
+      <BottomImageElement src={springBottom}></BottomImageElement>
+      <AuthorCredits
+        href="https://www.vecteezy.com/free-vector/spring"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Spring Vectors by Vecteezy
+      </AuthorCredits>
+    </AnimationsContainer>
+  );
+};
+
+const buildDecoration = (month) => {
+  if (month === 12) return Summer();
+  if (month >= 1 && month <= 3) return Summer();
+  if (month > 3 && month <= 6) return Winter();
+  if (month > 6 && month <= 9) return Autumn();
+  if (month > 9 && month <= 11) return Spring();
+};
 
 //------------------------------------------------------
 const Calendar = () => {
   const urlParams = useParams();
 
   const [recalculatingMonths, setRecalculatingMonths] = useState(true);
-  const [month, setMonth] = useState(urlParams.month);
-  const [year, setYear] = useState(urlParams.year);
+  const [month, setMonth] = useState(parseInt(urlParams.month));
+  const [year, setYear] = useState(parseInt(urlParams.year));
 
   //EVENT HANDLERS
 
@@ -85,80 +159,8 @@ const Calendar = () => {
     },
   });
 
-  const buildDecoration = () => {
-    if (month === 12)
-      return (
-        <AnimationsContainer>
-          <TopElementAnimated src={summerSvgUrl} />
-          <BottomImageElement src={summerBottom}></BottomImageElement>
-          <AuthorCredits
-            href="https://www.vecteezy.com/free-vector/nature"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nature Vectors by Vecteezy
-          </AuthorCredits>
-        </AnimationsContainer>
-      );
-    if (month >= 1 && month <= 3) {
-      return (
-        <AnimationsContainer>
-          <TopElementAnimated src={summerSvgUrl} />
-          <BottomImageElement src={summerBottom}></BottomImageElement>
-          <AuthorCredits
-            href="https://www.vecteezy.com/free-vector/nature"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nature Vectors by Vecteezy
-          </AuthorCredits>
-        </AnimationsContainer>
-      );
-    }
-    if (month > 3 && month <= 6) {
-      return (
-        <AnimationsContainer>
-          <TopElementAnimated src={summerSvgUrl} />
-          <BottomImageElement src={autumnBottom}></BottomImageElement>
-          <AuthorCredits
-            href="https://www.vecteezy.com/free-vector/nature"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nature Vectors by Vecteezy
-          </AuthorCredits>
-        </AnimationsContainer>
-      );
-    }
-    if (month > 6 && month <= 9) {
-      return (
-        <AnimationsContainer>
-          <TopElementAnimated src={snowflakeUrl} />
-          <BottomImageElement src={winterBottom}></BottomImageElement>
-        </AnimationsContainer>
-      );
-    }
-
-    if (month > 9 && month <= 11) {
-      return (
-        <AnimationsContainer>
-          <TopElementAnimated src={summerSvgUrl} />
-          <BottomImageElement src={springBottom}></BottomImageElement>
-          <AuthorCredits
-            href="https://www.vecteezy.com/free-vector/spring"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Spring Vectors by Vecteezy
-          </AuthorCredits>
-        </AnimationsContainer>
-      );
-    }
-  };
-
   return (
     <Component.CalendarContainer month={month}>
-      {buildDecoration()}
       <Component.CalendarHeader style={topBarCalendarAnimation}>
         <Component.CurrentDate>
           <Component.YearLinkRouter to="/selectyear">
@@ -181,6 +183,7 @@ const Calendar = () => {
           )
         );
       })}
+      {buildDecoration(month)}
     </Component.CalendarContainer>
   );
 };

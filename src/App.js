@@ -7,15 +7,6 @@ import SelectYear from "./pages/SelectYear";
 import AddTaskBar from "./pages/AddTaskBar";
 import EditTask from "./pages/EditTask";
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("./sw.js")
-    .then(function () {
-      console.log("Service Worker Registered");
-    })
-    .catch((e) => console.log("error creating service worker", e));
-}
-
 const App = () => {
   return (
     <Router>
