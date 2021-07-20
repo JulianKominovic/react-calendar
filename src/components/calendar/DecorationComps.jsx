@@ -1,7 +1,7 @@
 import { animated } from "react-spring";
 import styled from "styled-components";
 
-const AnimationsContainer = styled.div`
+const AnimationsContainer = styled(animated.div)`
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -9,6 +9,22 @@ const AnimationsContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+
+  background-color: ${(props) => {
+    if (props.month === 12) return "#76FFFF";
+    if (props.month >= 1 && props.month <= 3) {
+      return "#76FFFF";
+    }
+    if (props.month > 3 && props.month <= 6) {
+      return "#FCD499";
+    }
+    if (props.month > 6 && props.month <= 9) {
+      return "#DAF1FF";
+    }
+    if (props.month > 9 && props.month <= 11) {
+      return "#BAE0F2";
+    }
+  }};
 `;
 
 const TopElementAnimated = styled(animated.img)`

@@ -38,7 +38,7 @@ import autumnBottom from "../svgs/autumnBackground.svg";
 
 const Summer = () => {
   return (
-    <AnimationsContainer>
+    <>
       <TopElementAnimated src={summerSvgUrl} />
       <BottomImageElement src={summerBottom}></BottomImageElement>
       <AuthorCredits
@@ -48,13 +48,13 @@ const Summer = () => {
       >
         Nature Vectors by Vecteezy
       </AuthorCredits>
-    </AnimationsContainer>
+    </>
   );
 };
 
 const Winter = () => {
   return (
-    <AnimationsContainer>
+    <>
       <TopElementAnimated src={snowflakeUrl} />
       <BottomImageElement src={autumnBottom}></BottomImageElement>
       <AuthorCredits
@@ -64,22 +64,22 @@ const Winter = () => {
       >
         Nature Vectors by Vecteezy
       </AuthorCredits>
-    </AnimationsContainer>
+    </>
   );
 };
 
 const Autumn = () => {
   return (
-    <AnimationsContainer>
+    <>
       <TopElementAnimated src={snowflakeUrl} />
       <BottomImageElement src={winterBottom}></BottomImageElement>
-    </AnimationsContainer>
+    </>
   );
 };
 
 const Spring = () => {
   return (
-    <AnimationsContainer>
+    <>
       <TopElementAnimated src={summerSvgUrl} />
       <BottomImageElement src={springBottom}></BottomImageElement>
       <AuthorCredits
@@ -89,7 +89,7 @@ const Spring = () => {
       >
         Spring Vectors by Vecteezy
       </AuthorCredits>
-    </AnimationsContainer>
+    </>
   );
 };
 
@@ -109,6 +109,7 @@ const Calendar = () => {
   const [month, setMonth] = useState(parseInt(urlParams.month));
   const [year, setYear] = useState(parseInt(urlParams.year));
 
+  console.log();
   //EVENT HANDLERS
 
   const mobileHandlers = useSwipeable({
@@ -117,6 +118,7 @@ const Calendar = () => {
       const calculatePrevMonth = calculatePreviousMonth(month, year);
       setMonth(parseInt(calculatePrevMonth[0]));
       setYear(parseInt(calculatePrevMonth[1]));
+
       setRecalculatingMonths((prev) => !prev);
     },
     onSwipedLeft: () => {
@@ -158,6 +160,19 @@ const Calendar = () => {
       opacity: 0,
     },
   });
+  const swipeTransitionAnimations = useTransition(recalculatingMonths, {
+    from: {
+      opacity: 0,
+    },
+    enter: {
+      opacity: 1,
+      color: "#000",
+      delay: 200,
+    },
+    leave: {
+      opacity: 0,
+    },
+  });
 
   return (
     <Component.CalendarContainer month={month}>
@@ -183,7 +198,13 @@ const Calendar = () => {
           )
         );
       })}
-      {buildDecoration(month)}
+      {swipeTransitionAnimations((styles, item) => {
+        return item ? (
+          <AnimationsContainer style={styles} month={month}>
+            {buildDecoration(month)}
+          </AnimationsContainer>
+        ) : null;
+      })}
     </Component.CalendarContainer>
   );
 };

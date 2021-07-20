@@ -8,21 +8,6 @@ const CalendarContainer = styled.div`
   width: 100vw;
   overflow: hidden;
 
-  background-color: ${(props) => {
-    if (props.month === 12) return "#76FFFF";
-    if (props.month >= 1 && props.month <= 3) {
-      return "#76FFFF";
-    }
-    if (props.month > 3 && props.month <= 6) {
-      return "#FCD499";
-    }
-    if (props.month > 6 && props.month <= 9) {
-      return "#DAF1FF";
-    }
-    if (props.month > 9 && props.month <= 11) {
-      return "#BAE0F2";
-    }
-  }};
   color: ${CALENDAR_THEME.fc};
 `;
 
@@ -33,6 +18,8 @@ const CalendarHeader = styled(animated.div)`
   align-items: center;
   padding: 0 10vw;
   padding-top: 3vh;
+  position: relative;
+  z-index: 1;
 `;
 
 const YearLinkRouter = styled(Link)`
@@ -84,6 +71,13 @@ const CalendarGrid = styled(animated.div)`
 
   font-size: clamp(10px, 4vw, 50px);
   font-weight: 600;
+
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #aaaaaa37;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.226);
+  backdrop-filter: blur(4px);
+  border-radius: 1.6em;
+  padding: 1.6em 1.6em;
 
   margin: 8vh 2vh 2vh 2vh;
 `;
