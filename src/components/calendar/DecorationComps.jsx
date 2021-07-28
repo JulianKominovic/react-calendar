@@ -44,6 +44,7 @@ const BottomImageElement = styled(animated.img)`
   left: 0;
   bottom: 0;
   object-fit: cover;
+  object-position: top;
 `;
 
 const AuthorCredits = styled.a`

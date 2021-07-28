@@ -14,7 +14,7 @@ const getCurrentDate = () => {
 };
 
 const calculatePreviousMonth = (m, y) => {
-  const localMoment = moment().locale(USER_LANGUAGE).year(y).month(m).day(5);
+  const localMoment = moment().locale(USER_LANGUAGE).year(y).month(m);
 
   const prevMonthArray = localMoment
     .locale(USER_LANGUAGE)

@@ -60,18 +60,6 @@ const replaceTask = (year, month, day, keyTaskTitle, newTaskData) => {
   localStorage.setItem(id, JSON.stringify(filteredArray));
 };
 
-const test = () => {
-  // for (let i = 0; i < 10; i++) {
-  //   localStorage.setItem(
-  //     1,
-  //     JSON.stringify([
-  //       { name: i, url: "fenf" },
-  //       { name: i * 2, url: "ffecccccccc" },
-  //     ])
-  //   );
-  // }
-};
-
 const toggleNotificationFromTask = (year, month, day, keyTaskTitle) => {
   const id = parseInt("" + year + month + day);
   const localStorageData = JSON.parse(localStorage.getItem(id));
@@ -90,7 +78,6 @@ const clearLocalStorage = () => {
 
 export {
   clearLocalStorage,
-  test,
   addTaskToDatabase,
   removeTaskToDatabase,
   requestTasks,

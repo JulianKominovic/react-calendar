@@ -28,19 +28,30 @@ const AddTaskBar = (props) => {
   const month = parseInt(params.month);
   const year = parseInt(params.year);
 
+  const calculateInverseColor = (hex) => {
+    return (Number(`0x1${hex.slice(1)}`) ^ 0xffffff)
+      .toString(16)
+      .substr(1)
+      .toUpperCase();
+  };
+
   const buildTasks = () => {
     const taskRequest = requestTasks(year, month, day);
 
     return taskRequest.map((item) => {
+      const taskTextColor = "#" + calculateInverseColor(item.color);
+
       return (
         <Task key={item.title} backgroundColor={item.color}>
-          <TaskTitle>{item.title}</TaskTitle>
+          <TaskTitle textcolor={taskTextColor}>{item.title}</TaskTitle>
 
           <GeneralSection>
             <TaskButton
               to={`/addtask/${year}/${month}/${day}`}
+              color={taskTextColor}
               onClick={() => {
                 toggleNotificationFromTask(year, month, day, item.title);
+                alert("Esta funcion aun no esta disponible");
               }}
             >
               {item.notification ? (
@@ -50,6 +61,7 @@ const AddTaskBar = (props) => {
               )}
             </TaskButton>
             <TaskButton
+              color={taskTextColor}
               to={{
                 pathname: `/edittask/${year}/${month}/${day}`,
                 aboutProps: item,
@@ -58,6 +70,7 @@ const AddTaskBar = (props) => {
               <i className="fas fa-edit"></i>
             </TaskButton>
             <TaskButton
+              color={taskTextColor}
               to={`/addtask/${year}/${month}/${day}`}
               onClick={(e) =>
                 removeTaskToDatabase(year, month, day, item.title)

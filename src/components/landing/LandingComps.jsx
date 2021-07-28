@@ -29,13 +29,13 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-  font-size: clamp(10px, 3.6vw, 100px);
+  font-size: clamp(10px, 3.6vw, 2em);
   font-weight: 300;
   margin-top: -10vh;
 `;
 
 const SocialLinks = styled.a`
-  font-size: clamp(10px, 14vw, 100px);
+  font-size: clamp(10px, 14vw, 6em);
   color: ${LANDING_THEME.fc};
 `;
 
@@ -46,7 +46,7 @@ const HorizontalFlex = styled.div`
 const StyledReactLink = styled(Link)`
   background-color: ${LANDING_THEME["btn-clr"]};
   padding: 1em 3em;
-  font-size: clamp(10px, 5vw, 100px);
+  font-size: clamp(10px, 5vw, 2em);
   border-radius: 1.3em;
   text-decoration: none;
   color: #fff5eb;

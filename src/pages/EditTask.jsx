@@ -36,12 +36,19 @@ const EditTask = (props) => {
           notification: null,
         };
 
+  const calculateInverseColor = () => {
+    return (Number(`0x1${bgColor.slice(1)}`) ^ 0xffffff)
+      .toString(16)
+      .substr(1)
+      .toUpperCase();
+  };
   const params = useParams();
   const year = parseInt(params.year);
   const month = parseInt(params.month);
   const day = parseInt(params.day);
 
   const [bgColor, setBgColor] = useState(color || "");
+  const [fgColor, setFgColor] = useState("#" + calculateInverseColor(bgColor));
 
   const [taskConfig, setTaskConfig] = useState({
     title: title,
@@ -76,6 +83,7 @@ const EditTask = (props) => {
     }));
 
     setBgColor(e.target.value);
+    setFgColor("#" + calculateInverseColor(e.target.value));
   };
   const handleNotificationChange = (e) => {
     setTaskConfig((prevElements) => ({
@@ -91,14 +99,14 @@ const EditTask = (props) => {
   };
 
   return (
-    <TaskEditContainer backgroundColor={bgColor}>
+    <TaskEditContainer backgroundColor={bgColor} textcolor={fgColor}>
       <NavBarTask>
-        <BackButton to={`/addtask/${year}/${month}/${day}`}>
+        <BackButton color={fgColor} to={`/addtask/${year}/${month}/${day}`}>
           <i className="fas fa-arrow-circle-left"></i>
         </BackButton>
         <GeneralSection>
-          <Year>{year}</Year>
-          <MonthAndDay>
+          <Year color={fgColor}>{year}</Year>
+          <MonthAndDay color={fgColor}>
             {getDayOfTheWeek(year, month, day)} {day}, {getMonth(month)}
           </MonthAndDay>
         </GeneralSection>
@@ -111,6 +119,7 @@ const EditTask = (props) => {
         placeholder="Titulo..."
         value={taskConfig.title}
         onChange={(e) => handleTitleChange(e)}
+        textcolor={fgColor}
       />
 
       <InputDesc
@@ -120,6 +129,7 @@ const EditTask = (props) => {
         placeholder="Descripcion"
         onChange={(e) => handleDescChange(e)}
         value={taskConfig.desc}
+        textcolor={fgColor}
       />
       <GeneralSection>
         <InputTime
@@ -128,10 +138,12 @@ const EditTask = (props) => {
           id="time"
           onChange={(e) => handleTimeChange(e)}
           value={taskConfig.time}
+          textcolor={fgColor}
         />
         <InputNotification
           type="button"
           onClick={(e) => handleNotificationChange(e)}
+          textcolor={fgColor}
         >
           {taskConfig.notification === true ? (
             <i className="fas fa-bell-slash"></i>
@@ -142,7 +154,9 @@ const EditTask = (props) => {
       </GeneralSection>
 
       <GeneralSection>
-        <InputLabel htmlFor="color">Elegi un color</InputLabel>
+        <InputLabel htmlFor="color" textcolor={fgColor}>
+          Elegi un color
+        </InputLabel>
         <InputColor
           type="color"
           name="color"
@@ -155,6 +169,7 @@ const EditTask = (props) => {
       <SubmitButton
         to={`/addtask/${year}/${month}/${day}`}
         onClick={updateTask}
+        textcolor={fgColor}
       >
         Guardar
       </SubmitButton>

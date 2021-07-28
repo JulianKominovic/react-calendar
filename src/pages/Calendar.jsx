@@ -109,25 +109,32 @@ const Calendar = () => {
   const [month, setMonth] = useState(parseInt(urlParams.month));
   const [year, setYear] = useState(parseInt(urlParams.year));
 
-  console.log();
+  const calculatingNextMonth = () => {
+    setRecalculatingMonths((prev) => !prev);
+    const calculateNextMonths = calculateNextMonth(month, year);
+
+    setMonth(parseInt(calculateNextMonths[0]));
+    setYear(parseInt(calculateNextMonths[1]));
+    setRecalculatingMonths((prev) => !prev);
+  };
+
+  const calculatingPrevMonth = () => {
+    setRecalculatingMonths((prev) => !prev);
+    const calculatePrevMonth = calculatePreviousMonth(month, year);
+    setMonth(parseInt(calculatePrevMonth[0]));
+    setYear(parseInt(calculatePrevMonth[1]));
+
+    setRecalculatingMonths((prev) => !prev);
+  };
+
   //EVENT HANDLERS
 
   const mobileHandlers = useSwipeable({
     onSwipedRight: () => {
-      setRecalculatingMonths((prev) => !prev);
-      const calculatePrevMonth = calculatePreviousMonth(month, year);
-      setMonth(parseInt(calculatePrevMonth[0]));
-      setYear(parseInt(calculatePrevMonth[1]));
-
-      setRecalculatingMonths((prev) => !prev);
+      calculatingPrevMonth();
     },
     onSwipedLeft: () => {
-      setRecalculatingMonths((prev) => !prev);
-      const calculateNextMonths = calculateNextMonth(month, year);
-
-      setMonth(parseInt(calculateNextMonths[0]));
-      setYear(parseInt(calculateNextMonths[1]));
-      setRecalculatingMonths((prev) => !prev);
+      calculatingNextMonth();
     },
   });
 
@@ -174,8 +181,12 @@ const Calendar = () => {
     },
   });
 
+  const handleScroll = (e) => {
+    e.deltaY > 0 ? calculatingPrevMonth() : calculatingNextMonth();
+  };
+
   return (
-    <Component.CalendarContainer month={month}>
+    <Component.CalendarContainer month={month} onWheel={(e) => handleScroll(e)}>
       <Component.CalendarHeader style={topBarCalendarAnimation}>
         <Component.CurrentDate>
           <Component.YearLinkRouter to="/selectyear">

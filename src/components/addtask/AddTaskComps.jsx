@@ -16,25 +16,39 @@ const NavBarTask = styled.div`
   width: 82vw;
 `;
 
-const BackButton = styled(Link)`
+const BackButton = styled(Link).attrs((props) => ({
+  style: {
+    color: props.color || EDIT_TASK_THEME.fc,
+  },
+}))`
   text-decoration: none;
-  color: ${EDIT_TASK_THEME.fc};
+
   font-size: clamp(10px, 12vw, 100px);
 `;
 const GeneralSection = styled.div`
   text-align: right;
 `;
 
-const Year = styled.h1`
+const Year = styled.h1.attrs((props) => ({
+  style: {
+    color: props.color || EDIT_TASK_THEME.fc,
+  },
+}))`
   margin: 0;
-  color: ${EDIT_TASK_THEME.fc};
+
+  font-size: clamp(10px, 8vw, 4em);
 `;
 
-const MonthAndDay = styled.h2`
+const MonthAndDay = styled.h2.attrs((props) => ({
+  style: {
+    color: props.color || EDIT_TASK_THEME.fc,
+  },
+}))`
   margin: 0;
-  color: ${EDIT_TASK_THEME.fc};
+
   font-weight: 300;
   line-height: 0.8em;
+  font-size: clamp(10px, 6vw, 3em);
 `;
 
 const TaskBar = styled.div`
@@ -44,7 +58,7 @@ const TaskBar = styled.div`
   flex-direction: column;
   padding: 2vh 4vw;
 
-  overflow-y: scroll;
+  overflow-y: hidden;
 `;
 
 const TextIndicatesLists = styled.h3`
@@ -53,11 +67,12 @@ const TextIndicatesLists = styled.h3`
   font-weight: 600;
   margin-bottom: 2vh;
   margin-right: 2vw;
+  font-size: clamp(10px, 4vw, 2em);
 `;
 
 const EmptyTask = styled.div`
   background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 1.6em;
+  border-radius: 8vw;
   padding: 2vh 4vw;
   width: 82vw;
 
@@ -70,18 +85,22 @@ const EmptyTaskTitle = styled.h4`
   margin: 0;
   color: rgba(0, 0, 0, 0.3);
   font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: clamp(10px, 4vw, 2em);
 `;
 
 const TaskButton = styled(Link)`
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.3);
-  font-size: clamp(10px, 6vw, 100px);
-  margin-left: 6vw;
+  color: ${(props) => props.color};
+  font-size: clamp(10px, 6vw, 3em);
+  margin-left: 4vw;
 `;
 
 const Task = styled.div`
   background-color: ${(props) => props.backgroundColor || " #fef"};
-  border-radius: 1.6em;
+  border-radius: 8vw;
   padding: 2vh 4vw;
   width: 82vw;
 
@@ -92,9 +111,16 @@ const Task = styled.div`
 `;
 
 const TaskTitle = styled.h4`
+  width: 50%;
   margin: 0;
-  color: rgba(0, 0, 0, 1);
+  color: ${(props) => {
+    return props.textcolor;
+  }};
   font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: clamp(10px, 4vw, 2em);
 `;
 
 const TaskHour = styled.h4`

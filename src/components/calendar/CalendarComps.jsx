@@ -45,6 +45,7 @@ const Month = styled.h2`
   height: 100%;
   font-weight: 400;
   line-height: 0.9em;
+  font-size: clamp(10px, 6vw, 2em);
 `;
 const NavMenu = styled(Link)`
   height: 100%;
@@ -57,7 +58,6 @@ const NavMenu = styled(Link)`
 const CalendarGrid = styled(animated.div)`
   height: 70vh;
 
-  /* margin-top: 4vh; */
   display: grid;
 
   position: relative;
@@ -69,17 +69,17 @@ const CalendarGrid = styled(animated.div)`
   place-items: center;
   text-align: center;
 
-  font-size: clamp(10px, 4vw, 50px);
+  font-size: clamp(10px, 4vw, 2em);
   font-weight: 600;
 
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.602);
   border: 1px solid #aaaaaa37;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.226);
-  backdrop-filter: blur(4px);
-  border-radius: 1.6em;
-  padding: 1.6em 1.6em;
+  backdrop-filter: blur(6px);
+  border-radius: 4vw;
+  padding: 1.6vw;
 
-  margin: 8vh 2vh 2vh 2vh;
+  margin: 8vh 8vw 2vh 8vw;
 `;
 
 const CurrentDate = styled(animated.div)``;
@@ -130,7 +130,7 @@ const YearSelectorBackButton = styled(Link)`
   color: ${SELECT_YEAR_THEME.bgHover};
   left: 50%;
   transform: translate(-50%);
-  font-size: clamp(10px, 12vw, 100px);
+  font-size: clamp(10px, 10vw, 4em);
   text-decoration: none;
   background-color: ${SELECT_YEAR_THEME.fc};
   padding: 1vh 10vw;
@@ -159,7 +159,7 @@ const YearSelectorButton = styled(animated.button)`
   background-color: transparent;
   border: none;
   padding: 2vh 0;
-  font-size: clamp(10px, 8vw, 60px);
+  font-size: clamp(10px, 8vw, 3em);
   font-weight: 600;
   border-radius: 1.6em;
   width: 100%;
@@ -177,7 +177,7 @@ const MonthSelectorButton = styled(animated.button)`
   border: none;
   border-radius: 1.6em;
   padding: 2vh 0;
-  font-size: clamp(10px, 5vw, 60px);
+  font-size: clamp(10px, 5vw, 3em);
   font-weight: 400;
   width: 100%;
   &:hover,

@@ -2,33 +2,37 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { EDIT_TASK_THEME } from "../../themes";
 
-const TaskEditContainer = styled.div`
+const TaskEditContainer = styled.div.attrs((props) => ({
+  style: {
+    backgroundColor: props.backgroundColor,
+  },
+}))`
   padding: 1vh 4vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${(props) => props.backgroundColor || EDIT_TASK_THEME.bg};
+
   height: 100vh;
   gap: 1.6vh;
 `;
 
-const InputTitle = styled.input`
+const InputTitle = styled.input.attrs((props) => ({
+  style: {
+    color: props.textcolor,
+  },
+}))`
   background-color: transparent;
   border: none;
   border-bottom: 2px solid rgba(255, 255, 255, 0.198);
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.25);
   padding: 1vh 0;
   text-align: center;
-  color: ${EDIT_TASK_THEME.fc};
 
   width: 70%;
 
   font-size: clamp(10px, 6vw, 100px);
 
-  &::placeholder {
-    color: ${EDIT_TASK_THEME.placeHolderColor};
-  }
   &:active,
   :focus,
   :hover {
@@ -39,22 +43,24 @@ const InputTitle = styled.input`
   }
 `;
 
-const InputDesc = styled.input`
+const InputDesc = styled.textarea.attrs((props) => ({
+  style: {
+    color: props.textcolor,
+  },
+}))`
   background-color: ${EDIT_TASK_THEME.cardBackgroundColor};
 
   border: none;
   border-radius: 1.6em;
-  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.25);
-  padding: 1vh 4vw;
-  text-align: left;
-  color: ${EDIT_TASK_THEME.fc};
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.513);
+  padding: 2vh 4vw;
+  width: 50%;
   height: 40vh;
-  width: 60%;
 
   font-weight: 400;
-  font-size: clamp(10px, 4vw, 100px);
+  font-size: clamp(10px, 2vw, 100px);
   &::placeholder {
-    color: ${EDIT_TASK_THEME.placeHolderColor};
+    text-align: center;
   }
   &:active,
   :focus,
@@ -66,7 +72,11 @@ const InputDesc = styled.input`
   }
 `;
 
-const InputTime = styled.input`
+const InputTime = styled.input.attrs((props) => ({
+  style: {
+    color: props.textcolor,
+  },
+}))`
   background-color: ${EDIT_TASK_THEME.cardBackgroundColor};
 
   border: none;
@@ -75,7 +85,6 @@ const InputTime = styled.input`
   padding: 1vh 4vw;
   margin-right: 3vw;
   text-align: left;
-  color: ${EDIT_TASK_THEME.fc};
 
   font-weight: 400;
 
@@ -92,7 +101,11 @@ const InputTime = styled.input`
   }
 `;
 
-const InputNotification = styled.button`
+const InputNotification = styled.button.attrs((props) => ({
+  style: {
+    color: props.textcolor,
+  },
+}))`
   background-color: ${EDIT_TASK_THEME.cardBackgroundColor};
   border: none;
   border-radius: 1.6em;
@@ -130,15 +143,21 @@ const InputColor = styled.input`
   }
 `;
 
-const InputLabel = styled.label`
-  color: ${EDIT_TASK_THEME.fc};
+const InputLabel = styled.label.attrs((props) => ({
+  style: {
+    color: props.textcolor,
+  },
+}))`
   margin-right: 4vw;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 `;
 
-const SubmitButton = styled(Link)`
-  background-color: ${EDIT_TASK_THEME.fc};
-  color: ${EDIT_TASK_THEME.bg};
+const SubmitButton = styled(Link).attrs((props) => ({
+  style: {
+    color: props.textcolor,
+  },
+}))`
+  background-color: transparent;
 
   text-align: center;
   border-radius: 1.6em;
