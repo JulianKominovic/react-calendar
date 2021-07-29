@@ -39,7 +39,8 @@ Simple Calendar was designed in Figma.
 
 Here you can see some mockups, and starting ideas.
 
-![image-20210728212112853](C:\Users\julia\AppData\Roaming\Typora\typora-user-images\image-20210728212112853.png)
+
+<img src="https://user-images.githubusercontent.com/70329467/127415507-bca0bc1c-d326-4d68-88ca-8a8b08327ab0.png" alt="designing stage pics"></img>
 
 The main idea was keeping it simple after all it's called Simple Calendar.
 
