@@ -86,3 +86,12 @@ The task editing section, takes all the current data of the task you clicked and
 
 **By the moment, the notification button and functionalities related to are not working**
 
+
+
+
+
+
+
+My LinkedIn profile: https://www.linkedin.com/in/jkominovic/
+
+With 💘 Julian Ezequiel Kominovic.
