@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# React Simple Calendar
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_This is a simple calendar, built using React.js and some libraries to manipulate date and generate some animations_
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
+## Technologies used 🛠
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Javascript
+- React.js
+- CSS
+- HTML
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Libraries used 📚
 
-### `yarn build`
+- Moment.js
+- React Spring
+- Styled Components
+- React Swipeable
+- React Router
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features used 🧰
 
-### `yarn eject`
+- LocalStorage
+- Date functions
+- JSON
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Building explanation 🔨
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Designing stage
 
-## Learn More
+Simple Calendar was designed in Figma.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Here you can see some mockups, and starting ideas.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image-20210728212112853](C:\Users\julia\AppData\Roaming\Typora\typora-user-images\image-20210728212112853.png)
 
-### Code Splitting
+The main idea was keeping it simple after all it's called Simple Calendar.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The final result differs from the mockups because of accessibility and most because compatibly issues between desktop and mobile port.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+### Researching stage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+I wanted to practice React and make something I could handle, so I decided to build this project.
 
-### Advanced Configuration
+The main features I wanted this app to have were:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Nice and relaxing colors.
+- Offline data storage.
+- Single page site.
+- Mobile app.
 
-### Deployment
+**So I found the following libraries that would help me building this app:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **React Router**: this library basically allows you to have a single page application. It provides react components and new hooks to navigate through your page without reloading every time.
+- **Moment.js**: this library help me out with date vanilla function in JavaScript. It allows you to manipulate date milliseconds, parsing it, and operating it.
+- **React Swipeable**: it's a simple library with some new hooks to capture taps and swipes in mobile devices in a very powerful way.
+- **React spring** (evaluating moving to Framer Motion): this library will help you to animate and transition elements with physics properties.
+- **Styled Components**: it's one of my favorite libs. It allows you to make React components with styles without having to create hooks everywhere. Also provides you a dynamic class system, a powerful way to dynamically change elements CSS properties, and of course, it makes everything much more accessible.
 
-### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Developing stage
+
+I started making the static components first, then I moved to dynamics components.
+
+The landing is simple, just statics components.
+
+The calendar, the task, and edit task screens are entirely made dynamically.
+
+All of your tasks stores in LocalStorage, so whenever you want you can delete it, in a future I will add this function to the app.
+
+The LocalStorage keys are made with a combination of year + month + day, but it only accepts string type data, so when you create a new task, what's really happen is that an array of object (task) are being stringify and save in localStorage.
+
+The task list section, is entirely created in the moment you touch some day in the calendar. Immediately, creates a petition to localStorage and brings all the tasks to the screen.
+
+The task editing section, takes all the current data of the task you clicked and allows you to overwrite only the data you change.
+
+**By the moment, the notification button and functionalities related to are not working**
+
